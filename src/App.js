@@ -1,24 +1,57 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
+import SearchIcon from './search.svg';
+import MovieCard from './MovieCard';
 
-function App() {
+
+// 91a77b30
+
+const API_URL = ' http://www.omdbapi.com/?apikey=91a77b30'
+
+const movie1 = {
+  "Title": "Spiderman in Cannes",
+  "Year": "2016",
+  "imdbID": "tt5978586",
+  "Type": "movie",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BZDlmMGQwYmItNTNmOS00OTNkLTkxNTYtNDM3ZWVlMWUyZDIzXkEyXkFqcGdeQXVyMTA5Mzk5Mw@@._V1_SX300.jpg"
+};
+
+
+const App = () => {
+
+  const [movies, setMovies] = useState([]);
+
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+
+    setMovies(data.Search);
+  }
+
+  useEffect(() => {
+    searchMovies('Spiderman')
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='app'>
+      <h1>MovieLand</h1>
+
+      <div className='search'>
+        <input placeholder='Search for movies' 
+          value='Superman' 
+          onChange={() => {}}/>
+
+        <img src={SearchIcon} alt='search' onClick={() => {}}/>
+      </div>
+
+      
+
+      <div className='container'>
+        <MovieCard movie1={movies[0]}/>
+      </div>
+
+    </div>  
   );
 }
 
