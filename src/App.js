@@ -5,8 +5,10 @@ import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
 
 
-// 91a77b30
+// 91a77b30 (api key)
 
+
+// movies api
 const API_URL = ' http://www.omdbapi.com/?apikey=91a77b30'
 
 // const movie1 = {
@@ -45,6 +47,9 @@ const App = () => {
 
         <img src={SearchIcon} alt='search' onClick={() => searchMovies(searchTerm)}/>
       </div>
+
+      {/* ternary operator to iterate over movies object to display movies
+        if movies length is greater then 0, if not display "No movies found." */}
 
       {movies?.length > 0
           ? (

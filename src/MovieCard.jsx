@@ -1,5 +1,6 @@
 import React from "react";
 
+// movie card component for each movie
 
 const MovieCard = ({ movie }) => {
     return (
