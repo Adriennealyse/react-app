@@ -9,7 +9,7 @@ import MovieCard from './MovieCard';
 
 
 // movies api
-const API_URL = ' http://www.omdbapi.com/?apikey=91a77b30'
+const API_URL = 'http://www.omdbapi.com/?apikey=91a77b30'
 
 // const movie1 = {
 //   "Title": "Spiderman in Cannes",
@@ -30,7 +30,7 @@ const App = () => {
     const data = await response.json();
 
     setMovies(data.Search);
-  }
+  } 
 
   useEffect(() => {
     searchMovies('Spiderman')
@@ -55,7 +55,10 @@ const App = () => {
           ? (
             <div className='container'>
               {movies.map((movie) => (
+
+                <>
                 <MovieCard movie={movie}/>
+                </>
               ))}
             </div>
           ) : (

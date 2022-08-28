@@ -3,9 +3,13 @@ import React from "react";
 // movie card component for each movie
 
 const MovieCard = ({ movie }) => {
+
+    // const movieTitle = movie.Title
+
     return (
         <div className='movie'>
-          <div>
+          
+          <a href={`https://www.imdb.com/title/${movie.imdbID}`} rel="noreferrer" target='_blank'><div>
                 <p>{movie.Year}</p>
           </div>
 
@@ -16,9 +20,9 @@ const MovieCard = ({ movie }) => {
           <div>
                 <span>{movie.Type}</span>
                 <h3>{movie.Title}</h3>
-            </div>
+            </div></a>  
         
-        </div>
+        </div> 
 
     )
 }
